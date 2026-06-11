@@ -151,12 +151,12 @@ In \cite{yangEndtoEndQuantumEstimation2026} the authors develop a new algorithm 
 \subsection{Non-Hermitian Hamiltonians}
 
 % Hamiltonian structure of the TSI
-The Hamiltonian structure of the linear two-stream equation system for a single k was first studied by Kueny and Morrison \cite{kuenyNonlinearInstabilityChaos1995}.
+The Hamiltonian structure of the linear two-stream equation system for a single $k$-value was first studied by Kueny and Morrison \cite{kuenyNonlinearInstabilityChaos1995}.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/instabilities_TSI.pdf}
-    \caption{Two-Stream Instability}
+    \caption{Simplified schematic of the Two-Stream Instability Dispersion Relation. Left: the real and imaginary branches of the DR. Right: the mapping on the complex plane of the complex eigenvalues for this non-Hermitian Hamiltonian.}
     \label{fig:instabilities_TSI}
 \end{figure}
 
@@ -164,8 +164,12 @@ The “phase-transition” to purely real eigenvalues (stable) hints at some cha
 For very low $k$ (high $\lambda$), only one mode is highly entangled/correlated.
 For very high $k$ (low $\lambda$), all modes are mostly uncorrelated (no reinforced feedback-loop).
 
-The von-Neumann entanglement entropy cannot be measured directly on a quantum computer.
-However, the Rényi entropy of order 2 can be measured through a SWAP protocol (for many qubits this can be long interaction). The proof is relatively simple. See figure \ref{fig:tsi_Renyi}.
+% from vN to Rényi2 entropies
+The von-Neumann entanglement entropy requires full knowledge of the density matrix's spectrum, which generally demands full quantum state tomography. In practice, this is a computationally intractable task for large systems, so it cannot be measured directly. 
+%
+However, the Rényi entropy of order 2 can be measured since it only requires the purity $\mathrm{Tr}(\rho^2)$, which can be obtained through a SWAP protocol \cite{ekertDirectEstimationsLinear2002,islamMeasuringEntanglementEntropy2015,subasiEntanglementSpectroscopyDepthtwo2019}. For systems with many qubits this can lead to long interaction requirements.
+%The proof is relatively simple.
+See figure \ref{fig:tsi_Renyi}.
 
 \begin{figure}[!h]
     \centering
