@@ -1,0 +1,287 @@
+
+\section*{Appendix: Two-Stream Instability}\label{app:A}
+
+\subsection{Governing cold--fluid equations}
+
+For each beam $j=\{+,-\}$ with equilibrium drift $v_{0j}=\pm u_0$:
+
+\begin{align}
+    \partial_t n_j + \partial_x (n_j v_j) &= 0, \label{eq:continuity}\\
+    m_e\bigl(\partial_t v_j + v_j \partial_x v_j \bigr) &= -e E, \label{eq:momentum}\\
+    \partial_x E &= -\frac{e}{\varepsilon_0}\bigl(n_+ + n_- \bigr). \label{eq:poisson}
+\end{align}
+
+\subsection{Linearisation}
+
+Write $n_j = n_0 + n_{1j}$, $v_j = v_{0j} + v_{1j}$, $E = E_1$, retain only first--order terms and remove derivatives of zeroth--order terms.
+
+% why remove the  \cancel{m_e v_{1j} \partial_x v_{0j}} term?
+\begin{equation}
+    \cancel{\partial_t n_{0j}} + \partial_t n_{1j} + n_{0j} \partial_x v_{1j} + n_{1j} \partial_x v_{0j} + \cancel{n_{0j} \partial_x v_{0j}} + \cancel{n_{1j} \partial_x v_{1j}} = 0 \label{eq:continuity}
+\end{equation}
+%
+\begin{equation}
+    \cancel{m_e \partial_t v_{0j}} + m_e \partial_t v_{1j} + \cancel{m_e v_{0j} \partial_x v_{0j}} + m_e v_{0j} \partial_x v_{1j} + \cancel{m_e v_{1j} \partial_x v_{0j}} + \cancel{m_e v_{1j} \partial_x v_{1j}} = \cancel{-e E_0} - e E_1, \label{eq:momentum}\\
+\end{equation}
+%
+\begin{equation}
+    \cancel{\partial_x E_0} + \partial_x E_1 = -\frac{e}{\varepsilon_0}\bigl(\cancel{n_{0+}} + \cancel{n_{0-}} \bigr) -\frac{e}{\varepsilon_0}\bigl(n_{1+} + n_{1-} \bigr)\label{eq:poisson}
+\end{equation}
+
+So we get 
+\begin{align}
+    \partial_t n_{1j} + n_{0j} \partial_x v_{1j} + n_{1j} \partial_x v_{0j} &= 0, \label{eq:continuity}\\
+    %
+    m_e \partial_t v_{1j} + m_e v_{0j} \partial_x v_{1j}  &= - e E_1, \label{eq:momentum}\\
+    %
+    \partial_x E_1 &= -\frac{e}{\varepsilon_0}\bigl(n_{1+} + n_{1-} \bigr)\label{eq:poisson}
+\end{align}
+
+Rearranging to have the time derivatives on the LHS
+\begin{align}
+    \partial_t n_{1j} &= -n_{0j} ~\partial_x v_{1j} - n_{1j} \partial_x v_{0j}, \label{eq:continuity}\\
+    %
+    \partial_t v_{1j} &= - e E_1/m_e - v_{0j} ~\partial_x v_{1j}, \label{eq:momentum}\\
+    %
+    \partial_x E_1 &= -\frac{e}{\varepsilon_0}\bigl(n_{1+} + n_{1-} \bigr)\label{eq:poisson}
+\end{align}
+
+
+Fourier transforming these equations in space ($\partial_x \rightarrow ik$) we get
+
+\begin{align}
+\partial_t n_{1j} &= -i k ~n_{0j} ~v_{1j} -i k ~n_{1j} ~v_{0j}\\
+%
+\partial_t v_{1j} &= - e E_1/m_e - i k ~v_{0j}~ v_{1j}\\
+%
+ik~ E_1 &= -\frac{e}{\varepsilon_0}\bigl(n_{1+} + n_{1-} \bigr)
+\end{align}
+
+Replacing the electric field back
+\begin{align}
+\partial_t n_{1j} &= -i k ~n_{0j} ~v_{1j} - i k ~v_{0j}~n_{1j} \\
+%
+ \partial_t v_{1j}  &= - i k ~v_{0j}~ v_{1j} - \frac{i~e^2}{k ~m_e\varepsilon_0}\bigl(n_{1+} + n_{1-} \bigr)
+\end{align}
+
+Defining $\alpha \equiv e^2 /(m ~\varepsilon_0 ~k^2)$ and setting $n_{0+}=n_{0-}=n_0$ and $v_{0+}=v_0=-v_{0-}$
+\begin{align}
+\partial_t n_{1+} &= -i k (+~v_0~n_{1+} + n_{0} ~v_{1+} ) \\
+%
+\partial_t n_{1-} &= -i k (-v_0 ~n_{1-} + n_{0} ~v_{1-} ) \\
+%
+\partial_t v_{1+}  &= - i k \left( +v_0~ v_{1+} + \alpha \left(n_{1+} + n_{1-} \right) \right) \\
+%
+\partial_t v_{1-}  &= - i k \left( -v_0~ v_{1-} + \alpha \left(n_{1+} + n_{1-} \right) \right)
+\end{align}
+
+This can be written in a Schrödinger equation form 
+\begin{equation}
+    \partial_t \begin{bmatrix}
+        n_{1+}\\n_{1-}\\v_{1+}\\v_{1-}
+    \end{bmatrix} = -ik \begin{bmatrix}
+        v_0 & 0 & n_0 & 0\\
+        0& -v_0 & 0 & n_0\\
+        \alpha & \alpha & v_0 & 0\\
+        \alpha & \alpha & 0 & -v_0
+    \end{bmatrix} \begin{bmatrix}
+        n_{1+}\\n_{1-}\\v_{1+}\\v_{1-}
+    \end{bmatrix}, ~\partial_t \psi = -i H \psi
+\end{equation}
+
+------
+
+Fourier transforming these equations in time ($\partial_t \rightarrow -i \omega$) we get
+%Insert the plane--wave ansatz $e^{i(kx-\omega t)}$ to obtain, for each beam,
+\begin{align}
+    (-\omega + k v_{0j})\, n_{1j} + k n_0 v_{1j} &= 0, \label{eq:lin_cont}\\
+    (-\omega + k v_{0j})\, v_{1j} &= -\,\frac{e}{m_e} E_1. \label{eq:lin_mom}
+\end{align}
+
+Solving \ref{eq:lin_mom} for $v_{1j}$ and back--substituting into \ref{eq:lin_cont} gives
+    
+\begin{align}
+    v_{1j} &= -\,\frac{e k}{m_e(\omega - k v_{0j})}\,\phi_1,\\
+    n_{1j} &= -\,\frac{e k^{2} n_0}{m_e(\omega - k v_{0j})^{2}}\,\phi_1,
+\end{align}
+with $E_1 = -i k \phi_1$.
+
+\subsection{Dielectric function}
+
+\begin{align}
+    n_{1j} = -\frac{e  n_0}{\varepsilon_0 m_e} ~\dfrac{k^{2}}{(\omega - k v_{0j})^{2}}~\phi_1 \varepsilon_0 = -\omega_p^2 ~\dfrac{k^{2}}{(\omega - k v_{0j})^{2}} \dfrac{E_1}{-ik} \varepsilon_0 = \omega_p^2 ~\dfrac{k^{2}}{(\omega - k v_{0j})^{2}} \dfrac{e}{(-ik)^2} \sum_j n_{1j}
+\end{align}
+
+Insert $\sum_j n_{1j}$ into Poisson's equation \ref{eq:poisson} to obtain the cold--beam dielectric function
+
+\begin{equation}
+    \boxed{\;
+    \varepsilon(\omega,k) \;=\;
+    1 - \frac{\omega_p^{2}}{(\omega - k u_0)^{2}} - \frac{\omega_p^{2}}{(\omega + k u_0)^{2}} \;=\; 0
+    \;} .
+    \label{eq:eps}
+\end{equation}
+
+\subsection{Quartic form}
+
+Clearing denominators in \ref{eq:eps} yields
+\begin{equation}
+    \boxed{\;
+    \bigl(\omega^{2} - k^{2} u_{0}^{2}\bigr)^{2}
+    = 2 \omega_{p}^{2}\,\bigl(\omega^{2} + k^{2} u_{0}^{2}\bigr)
+    \;} .
+    \label{eq:quartic}
+\end{equation}
+
+The symmetry of the two counter--propagating beams makes \ref{eq:quartic} an even function of $\omega$ and $k$.
+
+\subsection{Roots: real and imaginary parts}
+
+Let $x \equiv \omega^{2}$.  Equation~\ref{eq:quartic} is quadratic in $x$:
+\[
+x^{2} - 2(\omega_p^{2} + k^{2} u_{0}^{2})\,x
++ k^{2} u_{0}^{2}\,\bigl(k^{2} u_{0}^{2} - 2\omega_p^{2}\bigr) = 0 .
+\]
+Solving gives
+\begin{equation}
+    \boxed{%
+    \omega^{2}
+    = \omega_p^{2} + k^{2} u_{0}^{2}
+    \;\pm\;
+    \omega_p \sqrt{\omega_p^{2} + 4 k^{2} u_{0}^{2}}
+    }\, .
+    \label{eq:roots}
+\end{equation}
+
+\subsection*{Real branches}
+
+The ``$+$'' choice in \ref{eq:roots} is always positive, giving two purely real modes (fast and slow).
+
+\subsection*{Unstable branch}
+
+With the ``$-$'' sign, the term under the outer square root can become negative.  Introducing the dimensionless variable
+$\xi \equiv k u_0 / \omega_p$,
+purely \emph{imaginary} solutions $\omega = i \gamma$ exist when $\xi^{2} < 2$, with growth rate
+
+\begin{equation}
+    \gamma(\xi)
+    = \omega_p \sqrt{-\bigl(\xi^{2} + 1\bigr) + \sqrt{1 + 4\xi^{2}} } .
+    \label{eq:gamma}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Threshold:} instability occurs for $k~ u_0 < \sqrt{2}\,\omega_p$.
+    \item \textbf{Maximum growth:} differentiating \ref{eq:gamma} shows the peak at $\xi_{\max} = \sqrt{3}/2$, with
+    $\gamma_{\max} = \tfrac12\,\omega_p$ ($= \Omega_p/\sqrt{2}$ in terms of the \emph{total} plasma frequency $\Omega_p = \sqrt{2}\,\omega_p$). Since this is independent of both $k$ and $u_0$, once the plasma frequency $\omega_p$ is chosen in the PIC/Vlasov simulation, the dominant growth rate will always be the same.
+\end{itemize}
+
+\subsection{Summary}
+
+\begin{itemize}
+    \item \emph{Dispersion relation:} equation~\ref{eq:quartic};
+    \item \emph{Explicit roots:} equation~\ref{eq:roots} (real) and equation~\ref{eq:gamma} (imaginary / growth);
+    \item \emph{Instability window:} $0 < k u_0 < \sqrt{2}\,\omega_p$;
+    \item \emph{Peak growth rate:} $\gamma_{\max} = \omega_p/2$ at $k u_0 = (\sqrt{3}/2)\,\omega_p$.
+\end{itemize}
+
+
+
+\section*{Appendix: Weibel Instability}\label{app:B}
+
+\subsection{Equilibrium and Governing Equations}
+
+We consider a cold, non--relativistic, charge--neutral electron--positron plasma formed by two counter--streaming beams.
+Species indices are $s\in\{e,+\}$, with equilibrium values
+\[
+n_s^{(0)}=\frac{n_0}{2}, \qquad 
+\bm u_s^{(0)}=\pm v_0\,\hat{\bm z}, \qquad
+\bm E^{(0)}=\bm B^{(0)}=\bm 0 .
+\]
+
+The cold two--fluid and Maxwell equations read
+\begin{align}
+\partial_t n_s + \nabla\!\cdot\!\bigl(n_s\bm u_s\bigr) &= 0, \\
+\partial_t \bm u_s + (\bm u_s\!\cdot\!\nabla)\bm u_s &= \frac{q_s}{m}
+\bigl(\bm E + \bm u_s \times \bm B\bigr), \\
+\nabla\times\bm E &= -\partial_t \bm B, \qquad
+\nabla\times\bm B = \mu_0 \bm J + \frac{1}{c^{2}}\partial_t \bm E .
+\end{align}
+
+\section{Linearisation and Fourier Analysis}
+
+Perturb every quantity as $g = g^{(0)} + g^{(1)}$ and assume plane waves
+$\,\propto \exp\!\bigl[i(kx-\omega t)\bigr]\,$ with wavevector $\bm k = k\hat{\bm x}$, i.e.\ \emph{perpendicular} to the drift direction.
+Only $E^{(1)}_z$ and $B^{(1)}_y$ survive; Faraday gives $B^{(1)}_y = kE^{(1)}_z/\omega$.
+
+\subsection{Single--Species Algebra}
+
+\subsection*{Continuity}
+
+For each species,
+\[
+n^{(1)}_s = \frac{k n_0}{2\omega}\,u^{(1)}_{sx}.
+\]
+
+\subsection*{Momentum}
+
+Using $u^{(0)}_{sz}=\pm v_0$ and $q_e=-e,\;q_+=+e$,
+\begin{align}
+-i\omega\,u^{(1)}_{sx} &= \frac{q_s}{m}\,u^{(0)}_{sz}\,B^{(1)}_y, \\
+-i\omega\,u^{(1)}_{sz} &= \frac{q_s}{m}\Bigl(E^{(1)}_z + u^{(1)}_{sx} B^{(1)}_y\Bigr).
+\end{align}
+Substituting $B^{(1)}_y$ and eliminating $u^{(1)}_{sx}$ yields
+\[
+u^{(1)}_{sz} = \frac{\mp e}{m\omega}\,E^{(1)}_z .
+\]
+
+\subsection{Current and Amp\`ere's Law}
+
+The perturbed current along $z$ is
+\[
+J^{(1)}_z = \sum_s q_s n_0 u^{(1)}_{sz}
+          = -\frac{e^{2} n_0}{m\omega}\,E^{(1)}_z .
+\]
+
+Using the curl--curl form of Maxwell's equations,
+\[
+k^{2} E^{(1)}_z = \frac{\omega^{2}}{c^{2}}\,E^{(1)}_z + \frac{i\omega\mu_{0}}{c^{2}}\,J^{(1)}_z .
+\]
+Insert $J^{(1)}_z$ and the definition $\omega_{p}^{2}\equiv 2e^{2}n_0/(\varepsilon_0 m)$ to obtain the \textbf{bi--quadratic}
+\begin{equation}
+\boxed{\;
+\omega^{4} - \omega^{2}\!\bigl(\omega_{p}^{2}+k^{2}c^{2}\bigr)
+          - \omega_{p}^{2}k^{2}v_{0}^{2}=0
+\;}
+\label{eq:quartic}
+\end{equation}
+which is the cold--fluid Weibel (filamentation) dispersion relation for an $e^\pm$ plasma.
+
+\subsection{Roots and Growth Rate}
+
+Equation~\ref{eq:quartic} gives
+\begin{equation}
+\omega^{2} = \frac{1}{2}\Bigl[\omega_{p}^{2}+k^{2}c^{2}
+      \pm \sqrt{\bigl(\omega_{p}^{2}+k^{2}c^{2}\bigr)^{2}
+      +4\omega_{p}^{2}k^{2}v_{0}^{2}}
+      \Bigr].
+\label{eq:roots}
+\end{equation}
+
+\begin{itemize}
+  \item The ``$+$'' branch is always real and corresponds to a stable EM wave.
+  \item The ``$-$'' branch becomes negative for suitable $k$, giving purely imaginary $\omega=i\gamma$ and hence exponential growth
+  \[
+  \gamma(k)=\frac{1}{\sqrt{2}}\,
+  \sqrt{\sqrt{\bigl(\omega_{p}^{2}+k^{2}c^{2}\bigr)^{2}+4\omega_{p}^{2}k^{2}v_{0}^{2}}
+  -\bigl(\omega_{p}^{2}+k^{2}c^{2}\bigr)}.
+  \]
+  In the long--wavelength limit $kc\ll\omega_{p}$ one recovers $\gamma\simeq k v_{0}$.
+\end{itemize}
+
+\subsection{Minimum Dimensionality for PIC Verification}
+
+\begin{itemize}
+  \item \textbf{Configuration space:} one spatial coordinate ($x$) suffices, giving a \emph{1D--3V} simulation.
+  \item \textbf{Velocity space:} all three momentum components are required; a 2--V reduction would remove the Lorentz coupling driving the instability.
+\end{itemize}
+
