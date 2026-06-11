@@ -55,7 +55,16 @@ National Technical University of Athens, Zographou 15780, Greece\\
 \vspace{10pt}
 
 \begin{abstract}
-    Knowledge about wave propagation and instabilities in plasmas is crucial for many applications, including accelerators, nuclear fusion reactors, etc.
+    %Knowledge about wave propagation and instabilities in plasmas is crucial for many applications, including accelerators, nuclear fusion reactors, etc.
+    
+Understanding wave propagation and instabilities in plasmas is central to both fundamental plasma physics and applications such as nuclear fusion. A key quantity is the dispersion relation, describing how perturbations of frequency and wavenumber $\omega(k)$ propagate or grow. Conventional extraction of dispersion branches relies on root-finding, which can become numerically unstable or costly, especially when many modes are present.
+
+Quantum algorithms have the potential to solve certain classes of eigenvalue problems more efficiently. While methods such as Quantum Phase Estimation and the Rodeo Algorithm \cite{choiRodeoAlgorithmQuantum2021} efficiently recover real spectra of Hermitian Hamiltonians, instabilities require access to complex eigenvalues. To this end, we explore a variational framework \cite{xieVariationalQuantumAlgorithms2024} that encodes non-Hermitian plasma Hamiltonians into measurable Hermitian cost functions, whose minima yield the desired eigenvalues.
+
+As a proof of concept, we apply both classes of algorithms to simple plasma dispersion problems. In the cold two-stream instability, the dynamics can be encoded into a $4\times4$ matrix representing density and velocity perturbations of the beams, from which the quantum algorithm recovers the wave frequency and growth rate. This setup is implementable on present-day quantum hardware. We also investigate more complex scenarios, including multibranch relations, kinetic instabilities \cite{engelQuantumAlgorithmVlasov2019}, and optimizations for Hamiltonian encoding, state preparation, and error mitigation.
+
+These results highlight the potential of quantum approaches for studying plasma dispersion relations, suggesting a pathway toward efficient analysis of high-dimensional kinetic instabilities relevant to fusion research.
+
 \end{abstract}
 
 
@@ -89,13 +98,10 @@ It was experimentally demonstrated in \cite{qianDemonstrationRodeoAlgorithm2024}
 %
 It has also been made variational in \cite{zhuEfficientQuantumEstimation2025}, where it is applied to GS and Excited states of a molecule.
 %
-Other studies include \cite{rochaEstimatingNumberStates2024, gomesUnravelingRodeoAlgorithm2024}.
-
+Other studies include \cite{rochaEstimatingNumberStates2024,gomesUnravelingRodeoAlgorithm2025}.
 % Don't know how to include this reference yet, so I wouln't
 %The nonlinear dynamics of the TSI can be approximately simulated within a quantum computing formalism \cite{maySecondQuantizationNonlinear2025}
-
-
-\cite{engelQuantumAlgorithmVlasov2019}
+In \cite{engelQuantumAlgorithmVlasov2019}, the authors simulate the real-time evolution of a Hermitian system. This is the linearized ElectroStatic Vlasov 0D1V system.
 
 
 
