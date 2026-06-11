@@ -61,6 +61,15 @@ National Technical University of Athens, Zographou 15780, Greece\\
 
 \section{Introduction}
 
+\textbf{Story bullet-points:}
+\begin{itemize}
+    \item Plasma Physics and Dispersion Relations
+    \item SOTA of classical DR solvers and possible limitations
+    \item Formulation of DR as eigenvalue problem 
+    \item Quantum Algorithms for eigenvalue problems (Hermitian and non-Hermitian
+    \item NISQ-adapted algorithms
+\end{itemize}
+
 % NISQ
 NISQ implies noise, which require shallow circuits to perform meaningful computations, which usually in practice leads to the use of hybrid-methods.
 Variational Quantum Eigensolvers are useful \cite{tillyVariationalQuantumEigensolver2022,fedorovVQEMethodShort2022}
@@ -69,8 +78,6 @@ Variational Quantum Eigensolvers are useful \cite{tillyVariationalQuantumEigenso
 % QPE
 Quantum Phase Estimation has been used to compute eigenvalues.
 \cite{shaoComputingEigenvaluesDiagonalizable2022}
-
-
 % Rodeo
 However, QPE is usually too expensive to run on NISQ devices for larger systems. Instead, an alternative has been proposed - Rodeo Algorithm.
 %
@@ -84,30 +91,35 @@ It has also been made variational in \cite{zhuEfficientQuantumEstimation2025}, w
 %
 Other studies include \cite{rochaEstimatingNumberStates2024, gomesUnravelingRodeoAlgorithm2024}.
 
-In \cite{yangEndtoEndQuantumEstimation2026} the authors develop a new algorithm built on QSVT to obtain the pseudospectra of non-Hermitian Hamiltonian, using a IonQ QPU.
+% Don't know how to include this reference yet, so I wouln't
+%The nonlinear dynamics of the TSI can be approximately simulated within a quantum computing formalism \cite{maySecondQuantizationNonlinear2025}
 
-The nonlinear dynamics of the TSI can be simulated within a quantum computing formalism \cite{maySecondQuantizationNonlinear2025}
 
 \cite{engelQuantumAlgorithmVlasov2019}
 
+
+
 % non-hermitian
+More generally, Plasma Physics Hamiltonians are Non-Hermitian.
+% review
 Non-Hermitian Physics has Review
 \cite{ashidaNonHermitianPhysics2020}
-%
-Quantum simulation of time evolution of non-Hermitian Hamiltonians has been done in \cite{jebraeilliQuantumSimulationQubit2025,zhangObservationExceptionalPoint2021,dograQuantumSimulationParity2021}
+% real-time 
+There are some works on quantum simulation of time evolution of non-Hermitian Hamiltonians has been done in \cite{jebraeilliQuantumSimulationQubit2025,zhangObservationExceptionalPoint2021,dograQuantumSimulationParity2021}.
 %
 Generalized eigenvalue problems have been discussed in \cite{parkerQuantumPhaseEstimation2020,rajchel-mieldziocQuantumAlgorithmSolving2025}
 %
 Find complex eigenvalues of non-Hermitian Hamiltonians \cite{wangMeasurementbasedQuantumPhase2010,daskinUniversalQuantumCircuit2014,xieVariationalQuantumAlgorithms2024,armaosQuantumComputingAtmospheric2024,liNonHermitianCouplingStrength2025}.
-
-
+%
 In \cite{buczkowskiGlobalRootsPoles2024} the authors use a triangulation method for the search of roots and poles in the complex plane, which could be useful for the study of non-Hermitian Hamiltonians.
 %
 In \cite{zhaoUniversalVariationalQuantum2023} the authors present experimental results for the eigenanalysis of non‑Hermintian matrices, with explicit ansatze and cost functions, and applied to the stability of a small electric circuit. In \cite{zhangQuantumComputingExtracting2025, singhQuantumSimulationsNuclear2025} the authors apply similar approaches to extract nuclear resonances.
-
+%
 In \cite{zhangObservationExceptionalPoint2021} the authors observe exceptional points in a non-Hermitian Hamiltonian, running on a 2-qubit quantum circuit.
-
-In \cite{zhangObservingExponentialGrowth2025} the authors don't use quantum circuits but study the eigenmodes of a non-Hermitian RLC resonator electrical circuit spontaneous PT -symmetry breaking
+%
+In \cite{zhangObservingExponentialGrowth2025} the authors don't use quantum circuits but study the eigenmodes of a non-Hermitian RLC resonator electrical circuit spontaneous PT-symmetry breaking.
+%
+In \cite{yangEndtoEndQuantumEstimation2026} the authors develop a new algorithm built on QSVT to obtain the pseudospectra of non-Hermitian Hamiltonian, using a IonQ QPU.
 
 
 \section{Methods}
