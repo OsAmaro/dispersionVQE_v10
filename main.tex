@@ -35,14 +35,12 @@
     Óscar Amaro \orcidlink{0000-0003-0615-0686} $^1$,
     Lucas Gamiz \orcidlink{0000-0002-7393-0896} $^1$, %Lucas Ivan Inigo Gamiz <lucas.inigo.gamiz@tecnico.ulisboa.pt>,
     Efstratios Koukoutsis \orcidlink{0000-0002-9143-2743} $^2$,
-    %João Pinto Barros??? \orcidlink{0000-0002-4336-0204} $^3$,
     Marija Vranic \orcidlink{0000-0003-3764-0645} $^1$ %marija.vranic@tecnico.ulisboa.pt
   }
 
 \address{$^1$ GoLP/Instituto de Plasma e Fus\~ao Nuclear, Instituto Superior T\'ecnico, Universidade de Lisboa, Lisbon, Portugal\\
 $^2$ School of Electrical and Computer Engineering,
 National Technical University of Athens, Zographou 15780, Greece\\
-%$^3$ ETHZ, Switzerland
 }
 
 %\address{
@@ -55,7 +53,7 @@ National Technical University of Athens, Zographou 15780, Greece\\
 \vspace{10pt}
 
 \begin{abstract}
-    %Knowledge about wave propagation and instabilities in plasmas is crucial for many applications, including accelerators, nuclear fusion reactors, etc.
+%Knowledge about wave propagation and instabilities in plasmas is crucial for many applications, including accelerators, nuclear fusion reactors, etc.
     
 Understanding wave propagation and instabilities in plasmas is central to both fundamental plasma physics and applications such as nuclear fusion. A key quantity is the dispersion relation, describing how perturbations of frequency and wavenumber $\omega(k)$ propagate or grow. Conventional extraction of dispersion branches relies on root-finding, which can become numerically unstable or costly, especially when many modes are present.
 
@@ -117,8 +115,6 @@ Generalized eigenvalue problems have been discussed in \cite{parkerQuantumPhaseE
 %
 Find complex eigenvalues of non-Hermitian Hamiltonians \cite{wangMeasurementbasedQuantumPhase2010,daskinUniversalQuantumCircuit2014,xieVariationalQuantumAlgorithms2024,armaosQuantumComputingAtmospheric2024,liNonHermitianCouplingStrength2025}.
 %
-In \cite{buczkowskiGlobalRootsPoles2024} the authors use a triangulation method for the search of roots and poles in the complex plane, which could be useful for the study of non-Hermitian Hamiltonians.
-%
 In \cite{zhaoUniversalVariationalQuantum2023} the authors present experimental results for the eigenanalysis of non‑Hermintian matrices, with explicit ansatze and cost functions, and applied to the stability of a small electric circuit. In \cite{zhangQuantumComputingExtracting2025, singhQuantumSimulationsNuclear2025} the authors apply similar approaches to extract nuclear resonances.
 %
 In \cite{zhangObservationExceptionalPoint2021} the authors observe exceptional points in a non-Hermitian Hamiltonian, running on a 2-qubit quantum circuit.
@@ -127,8 +123,20 @@ In \cite{zhangObservingExponentialGrowth2025} the authors don't use quantum circ
 %
 In \cite{yangEndtoEndQuantumEstimation2026} the authors develop a new algorithm built on QSVT to obtain the pseudospectra of non-Hermitian Hamiltonian, using a IonQ QPU.
 
+% Two approaches
+In standard plasma physics, DRs are obtained by solving for the zeros of the dielectric function, which reduces to solving polynomial equations.
+%
+An alternative and equivalent approach is to write the system of linearized-Fourier modes as a Schrödinger equation and finding the complex eigenvalues from it \cite{qinSpontaneousExplicitParitytimesymmetry2021}.
+%
+This has also been done in the context of streaming instabilities \cite{gamizPlasmaStreamingInstabilities2022}, although without a connection with quantum computing.
 
-Google Gemini ``the fluid growth rates are obtained by solving for the zeros of the dielectric function, which reduces to solving polynomial equations''
+% papers on quantum algorithms for root finding
+There are some papers tackling root-finding with quantum computing, which would be useful for the Dielectric function approach.
+%
+In \cite{buczkowskiGlobalRootsPoles2024} the authors use a triangulation method for the search of roots and poles in the complex plane, which could be useful for the study of non-Hermitian Hamiltonians.
+%
+There are also: \cite{tansuwannontQuantumPhaseEstimation2019,nagataFundamentalStructureQuantum}.
+
 
 \section{Methods}
 
@@ -330,7 +338,7 @@ We have deployed these observables (cost function and some of its gradients) on 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/ptsym_estimator.png}
-    \caption{Measurement of observables on IBM QPU.}
+    \caption{Measurement of observables on IBM QPU. Left: cost function. Middle and Right: gradients of the cost function (each point requires 2 evaluations through the PSR).}
     \label{fig:ptsym_estimator}
 \end{figure}
 
@@ -347,7 +355,7 @@ In figure \ref{fig:ptsym_traject_opt4_cost_scipy} we run the full optimization l
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/ptsym_traject_opt4_cost_scipy.pdf}
+    \includegraphics[width=0.6\linewidth]{figures/ptsym_traject_opt4_cost_scipy.pdf}
     \caption{Full optimization loop on simulator (no QPU).}
     \label{fig:ptsym_traject_opt4_cost_scipy}
 \end{figure}
