@@ -1,0 +1,60 @@
+\documentclass{wsconf}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{comment}
+
+\title{Kuldinow 2025: }
+
+\begin{document}
+\maketitle
+
+\section{Eqs 2.15 $\rightarrow$ 2.19}
+
+To derive the 10-moment Maxwell Weibel dispersion relation (Equation 2.19) from the linearized fluid and field equations (2.15–2.18), follow these algebraic steps:
+
+\subsection{1. Relate Field Perturbations}
+From Faraday’s Law (Equation 2.17), we establish a relationship between the magnetic and electric field perturbations:
+$$B'_z = \frac{k_x}{\omega} E'_y$$.
+
+\subsection{2. Solve for Species Transverse Velocity}
+
+We couple the transverse momentum equation (2.15) and the off-diagonal pressure equation (2.16) to solve for the velocity perturbation $u'_y$. 
+
+First, substitute the field relation $B'_z = \frac{k_x}{\omega} E'_y$ into Equation (2.16) to express the pressure perturbation $p'_{xy}$ in terms of $u'_y$ and $E'_y$:
+
+$$-i\omega p'_{xy} + ik_x p_{xx,0} u'_y = \frac{q}{m} \frac{k_x}{\omega} E'_y (p_{yy,0} - p_{xx,0})$$.
+
+Rearranging for $p'_{xy}$ and substituting this into the momentum equation (2.15) allows us to isolate $u'_y$ for a single species $s$:
+
+$$u'_{s,y} = \frac{i q_s E'_y}{m_s \omega} \left[ \frac{1 + \frac{k_x^2 (p_{s,yy,0} - p_{s,xx,0})}{\rho_{s,0} \omega^2}}{1 - \frac{k_x^2 p_{s,xx,0}}{\rho_{s,0} \omega^2}} \right]$$.
+
+\subsection{3. Introduce Thermodynamic Variables}
+
+Using the definition of the normalized wave speed $\xi_s = \frac{\omega}{k_x \sqrt{2T_{s,||}/m_s}}$ and the relation $p_{s,ii,0} = n_s k_B T_{s,i}$, we can simplify the bracketed term:
+
+$\frac{k_x^2 p_{s,xx,0}}{\rho_{s,0} \omega^2} = \frac{1}{2\xi_s^2}$
+
+$\frac{k_x^2 (p_{s,yy,0} - p_{s,xx,0})}{\rho_{s,0} \omega^2} = \frac{1}{2\xi_s^2} \left( \frac{T_{s,\perp}}{T_{s,||}} - 1 \right)$
+
+Substituting these into the velocity expression yields:
+
+$$u'_{s,y} = \frac{i q_s E'_y}{m_s \omega} \left[ 1 + \frac{T_{s,\perp}}{2T_{s,||}} \frac{1}{\xi_s^2 - 1/2} \right]$$.
+
+\subsection{4. Substitute into Ampère’s Law}
+ 
+
+Finally, substitute the expressions for $B'_z$ and $u'_{s,y}$ into Ampère’s Law (Equation 2.18):
+
+$$-ik_x \left( \frac{k_x}{\omega} E'_y \right) = \mu_0 \sum_s n_s q_s u'_{s,y} - i\mu_0 \epsilon_0 \omega E'_y$$.
+
+Dividing by $-i \omega \mu_0 \epsilon_0 E'_y$ and using $c^2 = 1/(\mu_0 \epsilon_0)$ and $\omega_{s,p}^2 = \frac{n_s q_s^2}{m_s \epsilon_0}$, we obtain:
+
+$$\frac{k_x^2 c^2}{\omega^2} = -\sum_s \frac{\omega_{s,p}^2}{\omega^2} \left[ 1 + \frac{T_{s,\perp}}{2T_{s,||}} \frac{1}{\xi_s^2 - 1/2} \right] + 1$$.
+
+Rearranging all terms to one side results in Equation 2.19:
+
+$$D_{10M} (k_x, \omega) = 1 - \frac{k^2_x c^2}{\omega^2} - \sum_s \frac{\omega^2_{s,p}}{\omega^2} \left( 1 + \frac{T_{s,\perp}}{2T_{s,||}} \frac{1}{\xi^2_s - 1/2} \right) = 0$$.
+
+
+\end{document}

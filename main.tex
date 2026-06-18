@@ -135,7 +135,17 @@ There are some papers tackling root-finding with quantum computing, which would 
 %
 In \cite{buczkowskiGlobalRootsPoles2024} the authors use a triangulation method for the search of roots and poles in the complex plane, which could be useful for the study of non-Hermitian Hamiltonians.
 %
-There are also: \cite{tansuwannontQuantumPhaseEstimation2019,nagataFundamentalStructureQuantum}.
+There are also: \cite{tansuwannontQuantumPhaseEstimation2019,nagataEfficientQuantumAlgorithms2018}.
+
+
+In \ref{fig:plasma_dispersion_derivation_algorithm} we sketch the two equivalent but complementary approaches to obtaining Plasma Dispersion relations: either through the Dielectric or the Hamiltonian ways.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/plasma_dispersion_derivation_algorithm.png}
+    \caption{General approaches to obtain Dispersion Relations in Plasma Physics}
+    \label{fig:plasma_dispersion_derivation_algorithm}
+\end{figure}
 
 
 \section{Methods}
@@ -267,6 +277,15 @@ The non-Hermitian matrix has eigenvalues and eigenvectors:
     \boxed{ H= \dfrac{1}{2}~ \left( \begin{matrix} i \Gamma & k \\ k & -i \Gamma \end{matrix} \right), \quad \lambda_\pm = \pm \dfrac{1}{2} \sqrt{k^2-\Gamma^2}, \quad v_\pm = \left( i\Gamma/k \pm \sqrt{1-\Gamma^2/k^2} ,1 \right) }
 \end{equation}
 
+In figure \ref{fig:ptsym_complex_plane} we show a schematic of selected eigenvalues on the complex plane and the branches of the dispersion relation.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/ptsym_complex_plane.pdf}
+    \caption{Schematic of selected eigenvalues on the complex plane and the branches of the dispersion relation.}
+    \label{fig:ptsym_complex_plane}
+\end{figure}
+
 Defining the quadratic Hermitian $M \equiv (H-\epsilon)^\dagger (H-\epsilon)$ with variational energy $\epsilon \equiv \epsilon_r + i \epsilon_i $
 
 \begin{equation}
@@ -337,7 +356,7 @@ We have deployed these observables (cost function and some of its gradients) on 
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/ptsym_estimator.png}
+    \includegraphics[width=0.8\linewidth]{figures/ptsym_estimator.pdf}
     \caption{Measurement of observables on IBM QPU. Left: cost function. Middle and Right: gradients of the cost function (each point requires 2 evaluations through the PSR).}
     \label{fig:ptsym_estimator}
 \end{figure}
@@ -347,7 +366,7 @@ In figure \ref{fig:ptsym_opt} we prescribe all but one variational parameters. H
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/ptsym_opt.pdf}
-    \caption{1D Optimization on IBM QPU.}
+    \caption{1D Optimization runs on IBM QPU. Left: the trajectories of the variational angles on the loss function landscape: Middle and Right: comparison between the ideal statevector and IBM QPU optimization procedures with COBYLA.}
     \label{fig:ptsym_opt}
 \end{figure}
 
