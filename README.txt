@@ -1,3 +1,12 @@
+Executive Summary:
+- No previous paper on QC for Plasma Dispersion Relations
+- We apply the Xie algorithm to find the complex eigenvalues of Plasma Instabilities
+- We find that the Electron Weibel instability suffers a 2nd order phase-transition at the cut-off wavenumber. We provide an intuitive physical picture for this
+- We compute several observables to "flag" and characterize unstable regions in the phase-diagram of these plasma setups
+- We compare Fluid and Kinetic models
+- For a toy-model, we manage to compute all results in closed-form
+
+
 Outline:
 - TSI fluid: 4x4 matrix
     - demo of branches (requires error bars from cloud of points around the local minima)
