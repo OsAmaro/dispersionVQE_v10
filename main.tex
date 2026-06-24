@@ -194,10 +194,21 @@ See figure \ref{fig:tsi_Renyi}.
 
 \section{Weibel}
 
+% why the Kuldinow paper
+We choose the setup from \cite{kuldinowTenmomentFluidModeling2025} because there both the fluid and the kinetic models show the same cut-off wavenumber, implying that the regions of stability are the same.
+
+\begin{equation}
+    H =  \left( \begin{matrix} 0 & k & 0 & i\\
+k T_{e\parallel} & 0 & i(T_{e\bot}-T_{e\parallel}) & 0 \\
+0 & 0 & 0 & k\\
+-i & 0 & k & 0
+ \end{matrix} \right)
+\end{equation}
+
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/weibel_dispersion_S2.png}
-    \caption{Dispersion Weibel}
+    \caption{Dispersion electron Weibel}
     \label{fig:weibel_dispersion_S2}
 \end{figure}
 
