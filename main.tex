@@ -34,7 +34,7 @@
 \author{
     Óscar Amaro \orcidlink{0000-0003-0615-0686} $^1$,
     Lucas Gamiz \orcidlink{0000-0002-7393-0896} $^1$, %Lucas Ivan Inigo Gamiz <lucas.inigo.gamiz@tecnico.ulisboa.pt>,
-    Efstratios Koukoutsis \orcidlink{0000-0002-9143-2743} $^2$,
+    t \orcidlink{0000-0002-9143-2743} $^2$,
     Marija Vranic \orcidlink{0000-0003-3764-0645} $^1$ %marija.vranic@tecnico.ulisboa.pt
   }
 
@@ -142,8 +142,8 @@ In \ref{fig:plasma_dispersion_derivation_algorithm} we sketch the two equivalent
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/plasma_dispersion_derivation_algorithm.png}
-    \caption{General approaches to obtain Dispersion Relations in Plasma Physics}
+    \includegraphics[width=0.8\linewidth]{figures/plasma_dispersion_derivation_algorithm.pdf}
+    \caption{General approaches to obtain linear Dispersion Relations in Plasma Physics.}
     \label{fig:plasma_dispersion_derivation_algorithm}
 \end{figure}
 
@@ -192,6 +192,27 @@ See figure \ref{fig:tsi_Renyi}.
 \end{figure}
 
 
+\section{Weibel}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/weibel_dispersion_S2.png}
+    \caption{Dispersion Weibel}
+    \label{fig:weibel_dispersion_S2}
+\end{figure}
+
+
+\begin{equation}
+    M_x = \sigma_x \otimes I + I \otimes \sigma_x = \begin{pmatrix} 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 \\ 0 & 1 & 1 & 0 \end{pmatrix}
+\end{equation}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/weibel_mx_avg.png}
+    \caption{ Weibel $\langle M_x\rangle$ phase-transition at the cut-off wavenumber.}
+    \label{fig:weibel_mx_avg}
+\end{figure}
 
 
 
