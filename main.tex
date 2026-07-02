@@ -197,6 +197,16 @@ See figure \ref{fig:tsi_Renyi}.
 % why the Kuldinow paper
 We choose the setup from \cite{kuldinowTenmomentFluidModeling2025} because there both the fluid and the kinetic models show the same cut-off wavenumber, implying that the regions of stability are the same.
 
+Background Maxwellian distribution function
+
+\begin{equation}
+    f_{s,0} = \left(\dfrac{m_s}{2\pi k_B} \right)^{3/2} \dfrac{1}{\sqrt{T_{s,\parallel} ~T_{s,\bot}^2}} \exp \left[ -\dfrac{m_s v_x^2}{2k_B T_{s,\parallel}} -\dfrac{m_s (v_y^2 + v_z^2)}{2k_B T_{s,\bot}} \right]
+\end{equation}
+
+
+The Schrödinger equation becomes
+$\partial_t \psi = -i H \psi, ~\psi=(u_y, p_{xy}, B_z, E_y)^T$
+
 \begin{equation}
     H =  \left( \begin{matrix} 0 & k & 0 & i\\
 k T_{e\parallel} & 0 & i(T_{e\bot}-T_{e\parallel}) & 0 \\
@@ -208,7 +218,15 @@ k T_{e\parallel} & 0 & i(T_{e\bot}-T_{e\parallel}) & 0 \\
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/weibel_dispersion_S2.png}
-    \caption{Dispersion electron Weibel}
+    \caption{Dispersion electron Weibel curves. Upper curves are from the fluid model while the lower ones are from the kinetic. Dashed lines show the theoretical prediction of the maximum growth rates and cut-off wavenumbers.}
+    \label{fig:weibel_dispersion_S2}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/weibel_dispersion_S2.png}
+    \caption{Weibel Rènyi S2 entanglement }
     \label{fig:weibel_dispersion_S2}
 \end{figure}
 
@@ -218,6 +236,7 @@ k T_{e\parallel} & 0 & i(T_{e\bot}-T_{e\parallel}) & 0 \\
 \end{equation}
 
 
+
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/weibel_mx_avg.png}
@@ -225,6 +244,9 @@ k T_{e\parallel} & 0 & i(T_{e\bot}-T_{e\parallel}) & 0 \\
     \label{fig:weibel_mx_avg}
 \end{figure}
 
+% idea with quantum computing
+The idea is that for very large matrix systems, it should be inefficient to store the eigenvectors but efficient to sample the magnetization and thus the observable that indicates the instability. 
+Measuring a non-zero value of <Mx> on a QPU is then a “flag” of instability.
 
 
 
