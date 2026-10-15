@@ -1,5 +1,5 @@
 Executive Summary:
-- No previous paper on QC for Plasma Dispersion Relations
+- There are previous papers on QC for Plasma Dispersion Relations, but here we implement NISQ algorithms to small plasma setups
 - We apply the Xie algorithm to find the complex eigenvalues of Plasma Instabilities
 - We find that the Electron Weibel instability suffers a 2nd order phase-transition at the cut-off wavenumber. We provide an intuitive physical picture for this
 - We compute several observables to "flag" and characterize unstable regions in the phase-diagram of these plasma setups

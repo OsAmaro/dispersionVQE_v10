@@ -34,7 +34,7 @@
 \author{
     Óscar Amaro \orcidlink{0000-0003-0615-0686} $^1$,
     Lucas Gamiz \orcidlink{0000-0002-7393-0896} $^1$, %Lucas Ivan Inigo Gamiz <lucas.inigo.gamiz@tecnico.ulisboa.pt>,
-    t \orcidlink{0000-0002-9143-2743} $^2$,
+    Efstratios Koukoutsis \orcidlink{0000-0002-9143-2743} $^2$,
     Marija Vranic \orcidlink{0000-0003-3764-0645} $^1$ %marija.vranic@tecnico.ulisboa.pt
   }
 
@@ -61,7 +61,9 @@ Quantum algorithms have the potential to solve certain classes of eigenvalue pro
 
 As a proof of concept, we apply both classes of algorithms to simple plasma dispersion problems. In the cold two-stream instability, the dynamics can be encoded into a $4\times4$ matrix representing density and velocity perturbations of the beams, from which the quantum algorithm recovers the wave frequency and growth rate. This setup is implementable on present-day quantum hardware. We also investigate more complex scenarios, including multibranch relations, kinetic instabilities \cite{engelQuantumAlgorithmVlasov2019}, and optimizations for Hamiltonian encoding, state preparation, and error mitigation.
 
-These results highlight the potential of quantum approaches for studying plasma dispersion relations, suggesting a pathway toward efficient analysis of high-dimensional kinetic instabilities relevant to fusion research.
+% caution about claims
+Although in the present formulation these algorithms provide no provable quantum advantage,
+these results highlight the potential of quantum approaches for studying plasma dispersion relations, suggesting a pathway toward efficient analysis of high-dimensional kinetic instabilities relevant to strong field QED plasmas, astrophysical plasmas, and energy fusion research.
 
 \end{abstract}
 
@@ -142,10 +144,28 @@ In \ref{fig:plasma_dispersion_derivation_algorithm} we sketch the two equivalent
 
 \begin{figure}[!h]
     \centering
+    \includegraphics[width=0.4\linewidth]{figures/hamiltonian_classes.pdf}
+    \caption{Classes of problems that can be tackled with Quantum Algorithms.}
+    \label{fig:hamiltonian_classes}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
     \includegraphics[width=0.8\linewidth]{figures/plasma_dispersion_derivation_algorithm.pdf}
     \caption{General approaches to obtain linear Dispersion Relations in Plasma Physics.}
     \label{fig:plasma_dispersion_derivation_algorithm}
 \end{figure}
+
+
+
+% this figure was created from the original in Xie's paper, using Google Gemini to provide the latex tikz code (not quantikz)
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/xie_hybrid.pdf}
+    \caption{General approaches to obtain linear Dispersion Relations in Plasma Physics.}
+    \label{fig:xie_hybrid}
+\end{figure}
+
 
 
 \section{Methods}
@@ -161,7 +181,9 @@ In \ref{fig:plasma_dispersion_derivation_algorithm} we sketch the two equivalent
     \label{fig:cma}
 \end{figure}
 
-\subsection{Non-Hermitian Hamiltonians}
+\subsection{Non-Hermitian Hamiltonians: Weibel}
+
+\textbf{replace TSI with Weibel}
 
 % Hamiltonian structure of the TSI
 The Hamiltonian structure of the linear two-stream equation system for a single $k$-value was first studied by Kueny and Morrison \cite{kuenyNonlinearInstabilityChaos1995}.
@@ -191,8 +213,6 @@ See figure \ref{fig:tsi_Renyi}.
     \label{fig:tsi_Renyi}
 \end{figure}
 
-
-\section{Weibel}
 
 % why the Kuldinow paper
 We choose the setup from \cite{kuldinowTenmomentFluidModeling2025} because there both the fluid and the kinetic models show the same cut-off wavenumber, implying that the regions of stability are the same.
@@ -245,26 +265,19 @@ Measuring a non-zero value of <Mx> on a QPU is then a “flag” of instability.
 
 
 
-\section{State Preparation}
+\subsection{State Preparation}
 
-- the ansatz has to have some structure, sweetspot between classical and quantum
+- the ansatz has to have some structure, a trade-off between classical and quantum
 - I suggest that we use ideas from quantum chemistry, like Hartree-Fock initial state preparation as a good initial guess and then use a simpler variational block
 - I also suggest building some ground state of the plasma system
 - Stratos builds on this and suggests to use unmagnetized solutions to build magnetized. So the strategy could be (T=0,B=0) -> (T=0,B) -> (T,B)
 
 
 
-\section{Observable Decomposition}
+\subsection{Observable Decomposition}
 
 - Pauli Expansion: divide-and-conquer idea. I actually don't know if the approach is inefficient for general sparse matrices, but I know that the Engel2019 Hamiltonian is dense, so I didn't pursue this
 
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.8\linewidth]{figures/minimal_examples.png}
-    \caption{4 examples}
-\end{figure}
 
 
 \section{Conclusions}
@@ -280,7 +293,8 @@ The data that support the findings of this study are available at \url{https://r
 \section{Acknowledgments}\label{sc:acknowledgments}
 
 % 
-The authors thank João Pinto Barros for useful discussions on the quantum Rodeo Algorithm, Alexandra Alves on Quantum Phase and Amplitude Estimation, José Mariano and André Enes on quantum algorithms, Filipe Cruz and Ankur Nath on plasma Dispersion Relations.
+The authors thank João Pinto Barros for useful discussions on the quantum Rodeo Algorithm, José Mariano and André Enes on quantum algorithms, Filipe Cruz and Ankur Nath on plasma Dispersion Relations.
+%, Alexandra Alves on Quantum Phase and Amplitude Estimation
 
 % The authors thank ..., for fruitful discussions and proofreading the manuscript.
 
